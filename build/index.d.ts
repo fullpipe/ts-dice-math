@@ -1,3 +1,1 @@
-export declare class Greeter {
-    greet(name: string): string;
-}
+export declare function roll(exp: string): number;

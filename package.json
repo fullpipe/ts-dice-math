@@ -1,5 +1,5 @@
 {
-  "name": "ts-package-boilerplate",
+  "name": "ts-dice-math",
   "version": "1.0.0",
   "description": "",
   "main": "build/index.js",
@@ -19,15 +19,15 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/fullpipe/ts-package-boilerplate.git"
+    "url": "git+https://github.com/fullpipe/ts-dice-math.git"
   },
   "keywords": [],
   "author": "Eugene Bravov <eugene.bravov@gmail.com> (https://github.com/fullpipe)",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/fullpipe/ts-package-boilerplate/issues"
+    "url": "https://github.com/fullpipe/ts-dice-math/issues"
   },
-  "homepage": "https://github.com/fullpipe/ts-package-boilerplate#readme",
+  "homepage": "https://github.com/fullpipe/ts-dice-math#readme",
   "devDependencies": {
     "@types/chai": "^4.2.16",
     "@types/mocha": "^8.2.2",
@@ -40,5 +40,7 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.2.4"
   },
-  "dependencies": {}
+  "dependencies": {
+    "@nastyox/rando.js": "^2.0.5"
+  }
 }
