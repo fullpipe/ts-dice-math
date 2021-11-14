@@ -18,7 +18,7 @@ npm intall --save crypto-browserify stream-browserify assert stream-http https-b
 
 and then add following to your `tsconfig.json`
 
-```json
+```jsonp
 {
   ...
   "compilerOptions": {
