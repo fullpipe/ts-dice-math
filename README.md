@@ -1,63 +1,72 @@
 # ts-dice-math
 
+D&D math for dice rolling. See demo [https://dice-math.fullpipe.dev/](https://dice-math.fullpipe.dev/)
 
+## Install
 
-# ts-package-boilerplate
-
-## Setup
-
-Use this repository as a template. 
-*Sed* package name 
-
-```
-sed -i '' 's/ts-package-boilerplate/am-i-online/' package.json
-sed -i '' 's/fullpipe/your-github-username/' package.json
+```bash
+npm install ts-dice-math --save
 ```
 
-Also fix other stuff in `package.json`
+### Browser (tested with Angular)
 
-That's it. Use it
+You have to install `crypto-browserify`
 
-```
-npm i
-npm run test
-```
-
-## What's inside?
-
-**gts** with some tweaks  
-**mocha + chai** for tests  
-**build/** dir not ignored by default  
-**npm publish** automation   
-
-## Publish
-
-### Login
-
-In order to publish your package, you need to create an NPM account.  
-If you don’t have an account run command `npm adduser`
-If you already have an account, run `npm login` to login to you NPM account.
-
-### Publish
-
-To publish your package run
-
-```
-npm publish
+```bash
+npm intall --save crypto-browserify stream-browserify assert stream-http https-browserify os-browserify
 ```
 
-### Versioning
+and then add following to your `tsconfig.json`
 
-To patch
-
+```json
+{
+  ...
+  "compilerOptions": {
+    ...
+    "paths": {
+      "crypto": ["./node_modules/crypto-browserify"],
+      "stream": ["./node_modules/stream-browserify"],
+      "assert": ["./node_modules/assert"],
+      "http": ["./node_modules/stream-http"],
+      "https": ["./node_modules/https-browserify"],
+      "os": ["./node_modules/os-browserify"]
+    }
+  }
+}
 ```
-npm version patch
-npm publish
+
+## Usage
+
+```typescript
+import { roll } from 'ts-dice-math';
+
+...
+// roll d20 with advantage
+console.log(roll('adv(d20, d20)'));
+
+// roll d20 with disadvantage
+console.log(roll('dis(d20, d20)'));
+
+// roll your two-handed sword damage
+console.log(roll('2d6 + 3'));
+
+// roll useless things
+console.log(roll('d100 / 3 + adv(d20, d20) * 2 - dis(d100, d100, d6)'));
 ```
 
-`version` command executes `git add ...` and `git push`, see `package.json`
+## What's included
 
+| name | description |
+| ---- | ----------- |
+| `+`, `-`, `*`, `/` | simple math |
+| `d20`, `3d6`, `d12 + d8` | dice rolls |
+| `adv(d20, d20)`, `adv(d20 + 3, d20 + 3)` | Advantage. Roll two `d20` and choose best |
+| `dis(d20, d20) + 3`, `dis(d20 + 3, d20 + 3)` | Disadvantage. Roll two `d20` and choose worst |
 
 ## Todo
 
-- [ ] add github actions for tests and build?
+- [ ] add more useful functions
+- [ ] add validation
+- [ ] add useful error messages with position of an error
+
+Feel free to contribute.
